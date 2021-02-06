@@ -1,3 +1,6 @@
+#no worky if you don't havy getalsea.php
+
+
 # app
 
 ## Project setup
