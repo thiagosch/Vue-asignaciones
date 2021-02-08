@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import Login from '../views/Login.vue'
+import Asignaciones from '../views/Asignaciones.vue'
 import NotFound from '../views/NotFound.vue'
 const routes = [{
         path: '/',
@@ -10,9 +12,15 @@ const routes = [{
         path: '/Login',
         name: 'Login',
 
-        component: () =>
-            import ( /* webpackChunkName: "about" */ '../views/Login.vue')
-    }, {
+        component: Login
+    },
+    {
+        path: '/Asignaciones',
+        name: 'Asignaciones',
+
+        component: Asignaciones,
+    },
+    {
         path: '/:catchAll(.*)',
         name: 'NotFound',
         component: NotFound

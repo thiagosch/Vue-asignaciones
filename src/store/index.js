@@ -2,7 +2,8 @@ import { createStore } from 'vuex'
 
 export default createStore({
     state: {
-        legajo: '00000'
+        legajo: '',
+        graficas: '',
     },
     getters: {
 
@@ -10,6 +11,9 @@ export default createStore({
     mutations: {
         setLegajo(state, value) {
             state.legajo = value
+        },
+        setGraficas(state, value) {
+            state.graficas = value
         }
     },
     actions: {},

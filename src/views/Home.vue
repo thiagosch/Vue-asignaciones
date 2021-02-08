@@ -4,21 +4,23 @@
       {{ user[0]["legajo"] }}
     </div>
 
-    <div :class="{'is-loading': searchingLegajo}" class="column is-two-fifths has-text-left control ">
-      
+    <div
+      :class="{ 'is-loading': searchingLegajo }"
+      class="column is-two-fifths has-text-left control"
+    >
       <input
         v-on:keyup="run"
         class="input is-info is-normal pl-7"
         v-model="legajo"
         type="text"
       />
-      <label id="inputLegajoTag" class="tag is-info is-light is-relative">Legajo</label>
-    </div>
-    
-    <div>
-      <table
-        class="table table is-bordered is-hoverable is-narrow is-fullwidth"
+      <label id="inputLegajoTag" class="tag is-info is-light is-relative"
+        >Legajo</label
       >
+    </div>
+
+    <div>
+      <table class="table is-hoverable is-narrow is-fullwidth is-asignacion">
         <thead>
           <tr>
             <th>Fecha</th>
@@ -76,14 +78,22 @@ export default {
     };
   },
   mounted() {
+    if(this.$cookie.getCookie("loggedin")){
+      this.$router.push('/Asignaciones');
+    }
+
+    if (!this.legajo && this.$cookie.getCookie("legajo")) {
+      this.legajo = this.$cookie.getCookie("legajo");
+    } else if(!this.legajo && this.$store.state.legajo) {
+      this.legajo = this.$store.state.legajo;
+    }
     this.run();
   },
   methods: {
     run() {
-      if (this.legajo.length > 0) {
-       
+      if (this.legajo.length > 0 && this.legajo) {
         if (this.checkLegajo(this.legajo)) {
-           this.searchingLegajo = true;
+          this.searchingLegajo = true;
           fetch(
             "http://" +
               window.location.hostname +
@@ -91,11 +101,17 @@ export default {
               this.legajo
           )
             .then((res) => res.json())
-            .then((data) => ((this.user = data), (this.saveLegajo()), (this.searchingLegajo = false), ((this.legajoTag = this.legajo))))
+            .then((data) => {
+              this.user = data;
+              this.saveLegajo();
+              this.searchingLegajo = false;
+              this.legajoTag = this.legajo;
+              this.$cookie.setCookie("legajo", this.legajo);
+            })
             .catch((err) => {
-              this.searchingLegajo = false
+              this.searchingLegajo = false;
               this.legajoTag = "...";
-              console.log(err)
+              console.log(err);
             });
 
           // console.log();
@@ -114,7 +130,6 @@ export default {
     },
     saveLegajo() {
       this.$store.commit("setLegajo", this.legajo);
-      
     },
   },
 };
@@ -126,10 +141,10 @@ export default {
   z-index: 1;
   left: 7px;
 }
-.pl-7{
+.pl-7 {
   padding-left: 4.2rem !important;
 }
-.control.is-loading::after{
+.control.is-loading::after {
   top: 1.5em !important;
   right: 1.625em !important;
 }

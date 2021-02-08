@@ -12,7 +12,6 @@
   </div>
   
   <div v-if="this.$cookie.getCookie('loggedin')" id="nav">
-    <router-link to="/">Inicio</router-link> |
     <router-link to="/Asignaciones">Asignaciones</router-link> |
     <router-link to="/Graficas">Graficas</router-link> |
     <router-link to="/Conteo">Conteo</router-link> 
@@ -68,5 +67,31 @@ body {
 body {
   background-color: rgb(33, 43, 54);
   height: 100vh;
+}
+.is-asignacion{
+  color:#89ffca !important;
+  background:rgb(0, 86, 97) !important;
+}
+.is-asignacion th{
+  color:aliceblue  !important;
+}
+.is-asignacion tbody tr:hover{
+  background-color:rgb(0, 51, 58) !important;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    /* border-color: #000; */
+}
+tr {
+    border-bottom: 1px solid rgb(0, 225, 255) !important;
+}
+
+th {
+  border-color:initial !important;
+  border-bottom: 1px solid rgb(0, 225, 255) !important;
+  border-top: 1px solid rgb(0, 225, 255) !important;
+  text-align: left;  
+    
 }
 </style>
