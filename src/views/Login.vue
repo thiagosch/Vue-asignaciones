@@ -112,9 +112,9 @@ export default {
       errlocalLogin: true,
     };
   },
-  mounted(){
-if(this.$cookie.getCookie("loggedin")){
-      this.$router.push('/Asignaciones');
+  mounted() {
+    if (this.$cookie.getCookie("loggedin")) {
+      this.$router.push("/Asignaciones");
     }
   },
   methods: {
@@ -122,8 +122,8 @@ if(this.$cookie.getCookie("loggedin")){
       var username = this.usernameLogin;
       var password = this.passwordLogin;
       var local = this.localLogin;
-      this.$cookie.setCookie('legajoAccount', this.usernameLogin)
-      this.$cookie.setCookie('loggedin', 1)
+      this.$cookie.setCookie("legajoAccount", this.usernameLogin);
+      this.$cookie.setCookie("loggedin", 1);
     },
     credentialCheck() {
       if (this.usernameLogin != "") {

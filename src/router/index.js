@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Asignaciones from '../views/Asignaciones.vue'
 import NotFound from '../views/NotFound.vue'
+import Graficas from '../views/Graficas.vue'
 const routes = [{
         path: '/',
         name: 'Home',
@@ -19,6 +20,12 @@ const routes = [{
         name: 'Asignaciones',
 
         component: Asignaciones,
+    },
+    {
+        path: '/Graficas',
+        name: 'Graficas',
+
+        component: Graficas,
     },
     {
         path: '/:catchAll(.*)',

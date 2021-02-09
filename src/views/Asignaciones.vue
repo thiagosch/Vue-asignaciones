@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <button type="button" @click="gohome">button</button>
+   
     <div v-if="user.length">
       {{ user[0]["legajo"] }}
     </div>
-
+<div class="has-background-white pb-0 pt-0 pl-0 pr-0 is-block box mr-1 ml-1">
     <div :class="{'is-loading': searchingLegajo}" class="column is-two-fifths has-text-left control ">
       
       <input
@@ -13,9 +13,9 @@
         v-model="legajo"
         type="text"
       />
-      <label id="inputLegajoTag" class="tag is-info is-light is-relative">Legajo</label>
+      <label id="inputLegajoTag" class="tag is-info is-light is-absolute">Legajo</label>
     </div>
-    
+    </div>
     <div>
       <table
         class="table  is-hoverable is-narrow is-fullwidth is-asignacion"
@@ -139,9 +139,10 @@ export default {
 
 <style scoped>
 #inputLegajoTag {
-  bottom: 33px;
+  position:absolute;
   z-index: 1;
-  left: 7px;
+  left: 19px;
+  top: 21px;
 }
 .pl-7{
   padding-left: 4.2rem !important;
