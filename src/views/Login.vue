@@ -122,7 +122,7 @@ export default {
       var username = this.usernameLogin;
       var password = this.passwordLogin;
       var local = this.localLogin;
-      this.$cookie.setCookie("legajoAccount", this.usernameLogin);
+      // this.$cookie.setCookie("userAccount", this.usernameLogin);
       this.$cookie.setCookie("loggedin", 1);
     },
     credentialCheck() {

@@ -4,7 +4,7 @@
     <div v-if="user.length">
       {{ user[0]["legajo"] }}
     </div>
-<div class="has-background-white pb-0 pt-0 pl-0 pr-0 is-block box mr-1 ml-1">
+<div class="box-upper pb-0 pt-0 pl-0 pr-0 is-block box mr-1 ml-1 mb-2">
     <div :class="{'is-loading': searchingLegajo}" class="column is-two-fifths has-text-left control ">
       
       <input
@@ -71,11 +71,12 @@ export default {
       color: "",
       legajo_user: "",
       userid: "",
-      legajo: this.$store.state.legajo,
+      legajo: this.accountLegajo,
       legajoTag: "",
       searchingLegajo: false,
     };
   },
+  props:["accountLegajo",],
   mounted() {
     if(!this.$cookie.getCookie("loggedin")){
       this.$router.push('/');
